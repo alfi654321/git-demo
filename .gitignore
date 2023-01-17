@@ -1,0 +1,16 @@
+#specific for this project
+
+#common
+build
+.eclipse
+.classpath
+.project
+.settings
+.class
+bin
+.idea
+out/
+*.iml
+target/
+logs/
+
