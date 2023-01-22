@@ -6,26 +6,49 @@
     <artifactId>git-demo</artifactId>
     <version>1.2-SNAPSHOT</version>
 
-
     <scm>
         <connection>scm:git:https://github.com/alfi654321/git-demo.git</connection>
         <developerConnection>scm:git:https://github.com/alfi654321/git-demo.git</developerConnection>
         <url>scm:git:https://github.com/alfi654321/git-demo.git</url>
-        <tag>release-tag-1.0.0</tag>
     </scm>
 
-    <distributionManagement>
-        <repository>
-            <id>my-repository</id>
-            <url>http://localhost:8080/releases</url>
-        </repository>
+    <profiles>
+        <profile>
+            <id>development</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>my-repository-snapshots</id>
+                    <url>http://localhost:8080/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+        <profile>
+            <id>test</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>my-repository-snapshots</id>
+                    <url>http://localhost:8080/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+        <profile>
+            <id>production</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>my-repository-releases</id>
+                    <url>http://localhost:8080/releases</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    <!--distributionManagement>
         <snapshotRepository>
-            <id>my-repository</id>
-            <url>http://localhost:8080/snapshots</url>
-        </snapshotRepository>
-        <!--snapshotRepository>
             <id>my-local-repository</id>
             <url>file:../local_repo/snapshots</url>
-        </snapshotRepository-->
-    </distributionManagement>
+        </snapshotRepository>
+    </distributionManagement-->
 </project>
