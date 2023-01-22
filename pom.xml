@@ -17,7 +17,15 @@
     <distributionManagement>
         <repository>
             <id>my-repository</id>
-            <url>http://localhost/releases</url>
+            <url>http://localhost:8080/releases</url>
         </repository>
+        <snapshotRepository>
+            <id>my-repository</id>
+            <url>http://localhost:8080/snapshots</url>
+        </snapshotRepository>
+        <!--snapshotRepository>
+            <id>my-local-repository</id>
+            <url>file:../local_repo/snapshots</url>
+        </snapshotRepository-->
     </distributionManagement>
 </project>
