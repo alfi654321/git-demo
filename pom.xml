@@ -12,6 +12,25 @@
         <url>scm:git:https://github.com/alfi654321/git-demo.git</url>
     </scm>
 
+    <!-- enable to read/resolve artifacts from the maven repository -->
+    <repositories>
+        <repository>
+            <id>my-repository-snapshots</id>
+            <url>http://localhost:8080/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>my-repository-releases</id>
+            <url>http://localhost:8080/releases</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <!-- enable to publish/store artifacts to the maven repository -->
     <profiles>
         <profile>
             <id>development</id>
@@ -37,10 +56,10 @@
         <profile>
             <id>production</id>
             <distributionManagement>
-                <snapshotRepository>
+                <repository>
                     <id>my-repository-releases</id>
                     <url>http://localhost:8080/releases</url>
-                </snapshotRepository>
+                </repository>
             </distributionManagement>
         </profile>
     </profiles>
